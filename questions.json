@@ -1,0 +1,103 @@
+{
+  "questions": [
+    {
+      "stem": "A neighborhood tested curbside composting with new, sealed bins designed to deter raccoons. The equipment worked, but contamination—plastic wrap and coffee pods mixed into food scraps—remained stubbornly high. Volunteers then tried a different approach: short building-lobby sessions where neighbors labeled sample items together and agreed on shared reminders (for example, “remove tea-bag staples”). Within a month, contamination rates fell by a third, even though collection routes and bins stayed the same. The sanitation department kept the bins but expanded the lobby sessions, noting that blocks with consistent reminders maintained lower contamination longer. The pilot suggests that equipment alone can’t solve sorting problems; clear, local norms and reminders are crucial.\nWhich choice best states the main idea of the text?",
+      "choices": [
+        "Social coordination, not just new bins, drives lasting improvements in compost sorting.",
+        "Metal bins save money compared to plastic ones in urban neighborhoods.",
+        "Composting originated in the early 1900s and remains largely unchanged.",
+        "Contamination is unavoidable in food-scrap collection programs."
+      ],
+      "answer_index": 0,
+      "rationale": "Despite effective bins, contamination dropped only after neighbor sessions and reminders, showing coordination mattered most."
+    },
+    {
+      "stem": "During her time as a medical researcher, Dr. Kamala Patel has published numerous studies on the effects of sleep deprivation. In recent years, she has shifted her focus to the connection between sleep and immune system regulation. Her most recent project explores whether people who consistently sleep fewer than six hours a night are more susceptible to viral infections. Preliminary data suggest that there is a notable difference in immune response among sleep-deprived participants. Which choice best states the main purpose of the text?",
+      "choices": [
+        "To present a biography of Dr. Kamala Patel’s research career",
+        "To evaluate differing opinions on the effects of sleep deprivation",
+        "To describe Patel’s shift in research focus and her most recent study",
+        "To explain the challenges of conducting studies on sleep and immunity"
+      ],
+      "answer_index": 2,
+      "rationale": "Choice C accurately captures the passage’s focus on Patel’s transition to new research and her latest study. A is too broad and biographical. B is incorrect—there is no discussion of differing opinions. D misrepresents the purpose; challenges of research are not mentioned."
+    },
+    {
+      "stem": "Archaeologist Ling Zhang recently examined a collection of Bronze Age artifacts discovered in the Taklamakan Desert. Among the items were textiles dyed in vivid colors, bronze tools with unique inscriptions, and fragments of pottery containing unfamiliar mineral compounds. **These artifacts, Zhang argues, provide compelling evidence of sustained trade networks between Central Asia and regions as far west as Mesopotamia during the Bronze Age.** This hypothesis challenges the long-held assumption among historians that such extensive long-distance trade across the Eurasian continent only emerged during the Iron Age, approximately 500 years later. If Zhang's interpretation proves correct, it would fundamentally reshape our understanding of early economic and cultural exchange patterns across ancient civilizations.\nQuestion:\nWhich choice best describes the function of the bold sentence in the text as a whole?",
+      "choices": [
+        "It provides evidence to support Zhang's challenge to a conventional historical view",
+        "It introduces an alternative theory about Bronze Age migration patterns",
+        "It contradicts earlier archaeological findings regarding the origin of the artifacts",
+        "It highlights methodological difficulties in interpreting ancient trade artifacts"
+      ],
+      "answer_index": 0,
+      "rationale": "The underlined sentence serves as the key evidence for Zhang's argument that challenges conventional historical assumptions. Zhang uses the specific artifacts (textiles, bronze tools, pottery) to support her claim that long-distance trade occurred earlier than previously believed, directly leading to the challenge mentioned in the following sentence.\nChoice B is incorrect because the passage focuses on trade networks, not migration patterns. While trade and migration can be related, Zhang's argument specifically concerns commercial exchange rather than population movement.\nChoice C is incorrect because Zhang is not contradicting previous archaeological findings about the artifacts themselves, but rather challenging historical assumptions about when long-distance trade began. The artifacts are new evidence, not contradictory evidence.\nChoice D is incorrect because the passage presents no methodological difficulties or challenges in interpretation. Instead, Zhang confidently uses the artifacts as evidence for her argument, suggesting clear interpretive conclusions rather than analytical problems."
+    },
+    {
+      "stem": "At a 2022 climate summit, several countries pledged to reduce methane emissions significantly by 2030. Methane is a potent greenhouse gas with a far greater warming potential than carbon dioxide over short periods. The new pledges focus on reducing emissions from agriculture and fossil fuel extraction, two of the largest human sources of methane.  \nQuestion:  \nWhich choice best states the main idea of the text?",
+      "choices": [
+        "Reducing methane emissions can help lower global carbon dioxide levels",
+        "Countries are targeting methane emissions as part of climate change mitigation",
+        "Methane is the most common greenhouse gas produced by humans",
+        "Fossil fuel companies are the only contributors to methane emissions"
+      ],
+      "answer_index": 1,
+      "rationale": "Choice B correctly identifies the main idea by capturing the central focus of the passage: countries taking action on methane emissions as part of climate efforts. The opening sentence establishes this main point with \"several countries pledged to reduce methane emissions,\" and the rest of the passage provides supporting details about why methane matters and which sources are being targeted.\nChoice A incorrectly suggests that reducing methane emissions directly lowers carbon dioxide levels. While both are greenhouse gases, the passage treats them as separate issues. The text states methane has \"greater warming potential than carbon dioxide\" but never claims that reducing methane affects CO₂ concentrations.\nChoice C misinterprets the comparative information in the passage. The text states that methane has \"far greater warming potential than carbon dioxide over short periods,\" which refers to potency per unit, not overall quantity. Carbon dioxide remains the most abundant greenhouse gas from human activities, even though methane is more potent.\nChoice D incorrectly narrows the focus to only fossil fuel companies while ignoring agriculture. The passage explicitly states that the pledges target \"emissions from agriculture and fossil fuel extraction, two of the largest human sources,\" making it clear that both sectors contribute significantly to methane emissions."
+    },
+    {
+      "stem": "Text 1\nSome linguists argue that text messaging is eroding language skills, citing an increase in abbreviations and grammatical shortcuts. They warn that frequent use of nonstandard writing forms may lead to lasting damage in formal writing abilities.\nText 2\nOther scholars contend that texting reflects linguistic creativity. They point out that skilled texters often switch fluidly between texting shorthand and formal writing, suggesting that texting may enhance, rather than impair, language awareness.\nQuestion:\nBased on the texts, how would the author of Text 2 most likely respond to the claim made in Text 1?",
+      "choices": [
+        "By agreeing that texting reduces formal writing abilities, especially in younger people",
+        "By asserting that texting fosters a kind of bilingualism in language usage",
+        "By proposing that texting shortcuts have no impact on language development",
+        "By stating that grammar mistakes in texts are usually unintentional"
+      ],
+      "answer_index": 1,
+      "rationale": "Choice B correctly captures how Text 2 would respond to Text 1's concern about \"lasting damage\" to formal writing abilities. Text 2's emphasis that \"skilled texters often switch fluidly between texting shorthand and formal writing\" directly supports the idea that texting creates a bilingual-like competency where users can code-switch between different language registers, countering Text 1's damage claim.\nChoice A contradicts Text 2's fundamental position. The author of Text 2 argues that texting \"may enhance, rather than impair, language awareness,\" making agreement with Text 1's damage claim impossible.\nChoice C goes beyond what Text 2 actually argues. While Text 2 suggests texting enhances language awareness, it doesn't claim that shortcuts have \"no impact\" on development—rather, it argues for a positive impact through increased linguistic flexibility.\nChoice D fails to address Text 1's core concern about formal writing damage. Text 1 warns about \"lasting damage in formal writing abilities,\" but discussing the intentionality of texting errors doesn't counter this claim about long-term effects on formal writing skills."
+    },
+    {
+      "stem": "During an archaeological excavation in the Andes, researchers unearthed a ceremonial structure containing intricately painted wall panels. The images are thought to depict celestial events, with patterns resembling solar eclipses, lunar phases, and comet paths. Initial analysis suggested these paintings served as astronomical records for an ancient civilization. <u>However, a recently discovered panel shows a figure performing what appears to be a ritual sacrifice while celestial bodies move overhead, suggesting the paintings may have documented ceremonial activities that coincided with specific astronomical events rather than serving purely as observational records.</u>\nQuestion:\n Which choice best describes the function of the underlined sentence in the text as a whole?",
+      "choices": [
+        "It provides additional evidence that reinforces the initial interpretation of the paintings as purely astronomical records",
+        "It introduces a more nuanced understanding that combines both astronomical and ceremonial elements",
+        "It contradicts the earlier findings by proposing that the paintings have no connection to celestial events",
+        "It suggests that researchers have abandoned their astronomical interpretation in favor of a ritual-based theory"
+      ],
+      "answer_index": 1,
+      "rationale": "The underlined sentence modifies rather than contradicts the initial astronomical interpretation by suggesting the paintings documented \"ceremonial activities that coincided with specific astronomical events.\" This creates a more complex understanding that incorporates both astronomical observation and ritual practice, rather than viewing them as separate or competing interpretations.\nChoice A is incorrect because the sentence doesn't reinforce the \"purely astronomical records\" interpretation—instead, it complicates that view by introducing ceremonial elements that work in conjunction with the astronomical components.\nChoice C is incorrect because the sentence doesn't reject the connection to celestial events. Rather, it maintains that celestial bodies are depicted but suggests they're shown in relation to ceremonial activities, preserving the astronomical connection while adding ritualistic context.\nChoice D is incorrect because researchers haven't abandoned the astronomical interpretation. The sentence describes celestial bodies \"moving overhead,\" maintaining the astronomical element while proposing that these events were significant for ceremonial rather than purely observational purposes."
+    },
+    {
+      "stem": "In 1906, Norwegian explorer Roald Amundsen became the first person to successfully navigate the Northwest Passage, a sea route connecting the Atlantic and Pacific Oceans through the Arctic. Amundsen’s journey, which lasted over three years, demonstrated that the passage was navigable, though difficult and dangerous. The expedition contributed valuable data to the study of Arctic geography, climate, and magnetic fields.  \nQuestion:  \nWhich choice best states the main purpose of the text?",
+      "choices": [
+        "To highlight the dangers that prevented earlier explorers from completing the Northwest Passage",
+        "To argue that Roald Amundsen’s expedition was more significant than previously thought",
+        "To summarize the achievements and contributions of Roald Amundsen’s expedition",
+        "To explain how Arctic explorers conducted scientific studies during their voyages"
+      ],
+      "answer_index": 2,
+      "rationale": "C correctly captures both parts of the passage: Amundsen’s successful navigation and the expedition’s contributions to science. A is inaccurate—earlier explorers are not mentioned. B introduces an argument not made. D is too narrow and omits the focus on Amundsen’s accomplishment."
+    },
+    {
+      "stem": "Hummingbirds are among nature's most remarkable flying machines, possessing unique adaptations that distinguish them from all other bird species. Their wings beat at an extraordinary rate—up to 80 times per second in some species—which produces the characteristic humming sound that gives these birds their name. Unlike conventional birds that rely on up-and-down wing strokes for flight, hummingbirds can hover motionlessly in midair by rotating their wings in a distinctive figure-eight motion. This specialized flight pattern is more similar to that of insects than to other birds, allowing hummingbirds to feed from flowers while remaining stationary. Additionally, their unique wing structure enables them to fly backward and sideways, capabilities that make them exceptional among avian species and perfectly suited for their nectar-feeding lifestyle.\nQuestion:\n Which choice best states the main idea of the text?",
+      "choices": [
+        "Hummingbirds possess unique flight abilities that distinguish them from other birds",
+        "Hummingbirds beat their wings faster than any other species of bird",
+        "The figure-eight wing motion of hummingbirds creates their characteristic humming sound",
+        "Scientists are still researching how hummingbirds achieve their remarkable flight capabilities"
+      ],
+      "answer_index": 0,
+      "rationale": "Choice A correctly captures the main idea by encompassing the passage's focus on hummingbirds' distinctive flight characteristics that set them apart from other birds. The text emphasizes multiple unique features: extraordinary wing beat frequency, hovering ability, figure-eight wing motion, and directional flight capabilities.\nChoice B is incorrect because the passage doesn't compare hummingbirds' wing speed to other bird species. While it states hummingbirds beat their wings \"up to 80 times per second,\" it doesn't claim this is faster than all other birds.\nChoice C incorrectly identifies what causes the humming sound. The passage states that the rapid wing beats (80 times per second) produce the hum, not the figure-eight motion. The figure-eight pattern enables hovering, while the speed creates the sound.\nChoice D contradicts the passage's tone and content. Rather than suggesting ongoing research or uncertainty, the passage confidently explains hummingbird flight mechanisms, clearly describing how their wing structure and motion patterns work."
+    },
+    {
+      "stem": "In 1953, researchers James Watson and Francis Crick announced a model of the DNA molecule that revealed its double-helix structure. Their work, which relied on data from Rosalind Franklin's X-ray images, laid the foundation for modern genetics. <u>Their discovery also raised new questions about how genetic information is stored, transmitted, and altered.</u>\nQuestion:\n Which choice best describes the function of the underlined sentence in the text as a whole?",
+      "choices": [
+        "It introduces the specific technique used to validate Watson and Crick's DNA model",
+        "It explains how the double-helix model advanced new areas of scientific inquiry",
+        "It emphasizes the importance of Rosalind Franklin's contributions to genetics",
+        "It provides historical context about prior beliefs regarding DNA structure"
+      ],
+      "answer_index": 1,
+      "rationale": "The underlined sentence expands the impact of Watson and Crick's model by noting its scientific implications, which aligns with B. A is incorrect—Franklin's technique is mentioned earlier, not in the underlined sentence. C focuses on the wrong person. D introduces unrelated context."
+    }
+  ]
+}
