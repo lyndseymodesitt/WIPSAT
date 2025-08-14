@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Project 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.06);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            text-align: center;
+            padding: 40px 20px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+        }
+
+        .upload-section.dragover {
+            border-color: #3498db;
+            background-color: #f8f9fa;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 16px;
+        }
+
+        .file-button:hover {
+            background: #2980b9;
+        }
+
+        /* Quiz Section */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 5px;
+        }
+
+        .question-counter {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .timer {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .question-stem {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+        }
+
+        #question-stem, .rationale {
+            white-space: pre-line;
+        }
+
+        .choices-container {
+            margin: 20px 0;
+            border: none;
+            padding: 0;
+        }
+
+        .choice-item {
+            margin: 10px 0;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .choice-item:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .choice-item.selected {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+
+        .choice-item.correct {
+            border-color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .choice-item.incorrect {
+            border-color: #e74c3c;
+            background: #fdeaea;
+        }
+
+        .choice-input {
+            margin-right: 10px;
+        }
+
+        .choice-label {
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+
+        .choice span {
+            line-height: 1.5;
+        }
+
+        .rationale-section {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+        }
+
+        .rationale-section.show {
+            display: block;
+        }
+
+        .rationale-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #856404;
+        }
+
+        .rationale {
+            font-size: 0.98rem;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #219a52;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #7f8c8d;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #c0392b;
+        }
+
+        /* Actions Section */
+        #actions {
+            text-align: center;
+        }
+
+        /* Results Section */
+        #scoreline {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .missed-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            border-radius: 5px;
+        }
+
+        .missed-stem {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .answer-info {
+            margin: 10px 0;
+        }
+
+        .answer-info strong {
+            display: inline-block;
+            width: 120px;
+        }
+
+        .missed-rationale {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 3px;
+            font-style: italic;
+        }
+
+        /* Status Messages */
+        .status-message {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .status-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .status-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .card {
+                padding: 15px;
+            }
+            
+            .quiz-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .nav-buttons {
+                justify-content: center;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Markdown Styling */
+        code {
+            background: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MCQ Project 1</h1>
+        
+        <!-- Status message area for accessibility -->
+        <div id="status-message" aria-live="polite" aria-atomic="true"></div>
+        
+        <!-- File Upload Section -->
+        <section id="upload-section" class="card upload-section">
+            <h2>Load Questions</h2>
+            <p>Upload your questions_sat.json file to begin the quiz</p>
+            <div class="file-input-wrapper">
+                <input type="file" id="file-input" class="file-input" accept=".json" aria-describedby="file-help">
+                <label for="file-input" class="file-button">Choose File</label>
+            </div>
+            <p id="file-help">Supports JSON files with question arrays or {questions:[...]} format (prefers {questions:[...]} if both present)</p>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="card hidden">
+            <div class="quiz-header">
+                <div class="question-counter" id="question-counter" aria-live="polite">Question 1 of 0</div>
+                <div class="timer" id="timer" aria-live="polite">Time: 00:00</div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-stem" id="question-stem"></div>
+                
+                <fieldset class="choices-container" id="choices-container" aria-labelledby="question-stem">
+                    <legend class="sr-only">Answer choices</legend>
+                    <!-- Choices will be populated dynamically -->
+                </fieldset>
+
+                <div class="rationale-section" id="rationale-section">
+                    <div class="rationale-title">Explanation:</div>
+                    <div id="rationale-text" class="rationale"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="nav-buttons">
+                    <button id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+                    <button id="next-btn" class="btn btn-secondary" disabled>Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actions Section -->
+        <section id="actions" class="card hidden">
+            <button id="submit" class="btn btn-success">Submit Quiz</button>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="card hidden">
+            <h2>Results</h2>
+            <p id="scoreline" aria-live="polite"></p>
+            <div id="review"></div>
+            <button id="restart" class="btn btn-primary">Restart Quiz</button>
+        </section>
+    </div>
+
+    <script>
+        // Safe Markdown renderer
+        function escapeHTML(s){
+            return s.replace(/[&<>"']/g, ch =>
+                ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[ch]));
+        }
+
+        function renderMD(src){
+            let h = escapeHTML(String(src ?? ''));
+            // inline code
+            h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
+            // bold **...**
+            h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            // italic *...*
+            h = h.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+            // line breaks
+            h = h.replace(/\\n/g, '<br>');
+            return h;
+        }
+
+        // Text normalizer
+        function cleanText(s) {
+            if (s == null) return '';
+            // turn literal backslash-n into real newlines
+            return String(s).replace(/\\n/g, '\n');
+        }
+
+        class MCQQuiz {
+            constructor() {
+                this.bank = [];
+                this.answers = [];
+                this.current = 0;
+                this.startTime = null;
+                this.timerInterval = null;
+                
+                this.initializeElements();
+                this.attachEventListeners();
+            }
+
+            initializeElements() {
+                // Sections
+                this.uploadSection = document.getElementById('upload-section');
+                this.quizSection = document.getElementById('quiz-section');
+                this.actionsSection = document.getElementById('actions');
+                this.resultsSection = document.getElementById('results');
+                
+                // File input
+                this.fileInput = document.getElementById('file-input');
+                
+                // Quiz elements
+                this.questionCounter = document.getElementById('question-counter');
+                this.timer = document.getElementById('timer');
+                this.questionStem = document.getElementById('question-stem');
+                this.choicesContainer = document.getElementById('choices-container');
+                this.rationaleSection = document.getElementById('rationale-section');
+                this.rationaleText = document.getElementById('rationale-text');
+                
+                // Buttons
+                this.prevBtn = document.getElementById('prev-btn');
+                this.nextBtn = document.getElementById('next-btn');
+                this.submitBtn = document.getElementById('submit');
+                this.restartBtn = document.getElementById('restart');
+                
+                // Results
+                this.scoreline = document.getElementById('scoreline');
+                this.review = document.getElementById('review');
+                
+                // Status message
+                this.statusMessage = document.getElementById('status-message');
+            }
+
+            attachEventListeners() {
+                // File upload
+                this.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
+                
+                // Drag and drop
+                this.uploadSection.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    this.uploadSection.classList.add('dragover');
+                });
+                
+                this.uploadSection.addEventListener('dragleave', () => {
+                    this.uploadSection.classList.remove('dragover');
+                });
+                
+                this.uploadSection.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    this.uploadSection.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        this.handleFile(files[0]);
+                    }
+                });
+                
+                // Quiz navigation
+                this.prevBtn.addEventListener('click', () => this.previousQuestion());
+                this.nextBtn.addEventListener('click', () => this.nextQuestion());
+                this.submitBtn.addEventListener('click', () => this.submitQuiz());
+                this.restartBtn.addEventListener('click', () => this.restartQuiz());
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+            }
+
+            showStatusMessage(message, type = 'info') {
+                this.statusMessage.className = `status-message status-${type}`;
+                this.statusMessage.textContent = message;
+                this.statusMessage.style.display = 'block';
+                
+                // Auto-hide success/info messages after 5 seconds
+                if (type !== 'error') {
+                    setTimeout(() => {
+                        this.statusMessage.style.display = 'none';
+                    }, 5000);
+                }
+            }
+
+            handleFileSelect(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    this.handleFile(file);
+                }
+            }
+
+            handleFile(file) {
+                if (file.type !== 'application/json') {
+                    this.showStatusMessage('Please select a valid JSON file.', 'error');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        this.loadQuestions(data);
+                    } catch (error) {
+                        this.showStatusMessage('Invalid JSON file. Please check the file format.', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            loadQuestions(data) {
+                let questions;
+                
+                // Handle both array format and object format
+                // Priority: prefer {questions:[...]} format if present
+                if (data.questions && Array.isArray(data.questions)) {
+                    questions = data.questions;
+                } else if (Array.isArray(data)) {
+                    questions = data;
+                } else {
+                    this.showStatusMessage('Invalid file format. Expected an array of questions or an object with a "questions" property.', 'error');
+                    return;
+                }
+
+                // Normalize all text fields with cleanText
+                questions = questions.map(q => ({
+                    ...q,
+                    stem: cleanText(q.stem),
+                    rationale: cleanText(q.rationale),
+                    choices: (q.choices || []).map(cleanText)
+                }));
+
+                // Validate questions
+                const validation = this.validateQuestions(questions);
+                if (!validation.isValid) {
+                    this.showStatusMessage(validation.message, 'error');
+                    return;
+                }
+
+                this.bank = questions;
+                this.answers = Array(this.bank.length).fill(null);
+                this.current = 0;
+                this.initializeQuiz();
+            }
+
+            validateQuestions(questions) {
+                if (!questions || questions.length === 0) {
+                    return {
+                        isValid: false,
+                        message: 'No questions found in the file. Please check your JSON structure.'
+                    };
+                }
+
+                for (let i = 0; i < questions.length; i++) {
+                    const q = questions[i];
+                    const questionNum = i + 1;
+
+                    // Check required properties
+                    if (!q.stem || typeof q.stem !== 'string') {
+                        return {
+                            isValid: false,
+                            message: `Question ${questionNum}: Missing or invalid "stem" property. Each question must have a text stem.`
+                        };
+                    }
+
+                    if (!q.choices || !Array.isArray(q.choices)) {
+                        return {
+                            isValid: false,
+                            message: `Question ${questionNum}: Missing or invalid "choices" property. Each question must have an array of choices.`
+                        };
+                    }
+
+                    if (q.choices.length !== 4) {
+                        return {
+                            isValid: false,
+                            message: `Question ${questionNum}: Expected exactly 4 choices, but found ${q.choices.length}. Please ensure each question has 4 answer options.`
+                        };
+                    }
+
+                    // Validate each choice is a string
+                    for (let j = 0; j < q.choices.length; j++) {
+                        if (typeof q.choices[j] !== 'string') {
+                            return {
+                                isValid: false,
+                                message: `Question ${questionNum}, Choice ${j + 1}: All choices must be text strings.`
+                            };
+                        }
+                    }
+
+                    if (typeof q.answer_index !== 'number' || q.answer_index < 0 || q.answer_index > 3) {
+                        return {
+                            isValid: false,
+                            message: `Question ${questionNum}: Invalid "answer_index". Must be a number between 0 and 3 (corresponding to choices A-D).`
+                        };
+                    }
+
+                    if (!q.rationale || typeof q.rationale !== 'string') {
+                        return {
+                            isValid: false,
+                            message: `Question ${questionNum}: Missing or invalid "rationale" property. Each question must have an explanation.`
+                        };
+                    }
+                }
+
+                return { isValid: true };
+            }
+
+            initializeQuiz() {
+                this.startTime = new Date();
+                
+                // Show quiz and actions sections, hide upload and results
+                this.uploadSection.classList.add('hidden');
+                this.quizSection.classList.remove('hidden');
+                this.actionsSection.classList.remove('hidden');
+                this.resultsSection.classList.add('hidden');
+                
+                this.startTimer();
+                this.displayCurrentQuestion();
+                this.updateNavigationButtons();
+                
+                this.showStatusMessage(`Quiz loaded successfully! ${this.bank.length} questions ready.`, 'success');
+            }
+
+            startTimer() {
+                this.timerInterval = setInterval(() => {
+                    const elapsed = new Date() - this.startTime;
+                    this.timer.textContent = `Time: ${this.formatTime(elapsed)}`;
+                }, 1000);
+            }
+
+            stopTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            }
+
+            formatTime(milliseconds) {
+                const totalSeconds = Math.floor(milliseconds / 1000);
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            displayCurrentQuestion() {
+                const question = this.bank[this.current];
+                
+                // Update question counter
+                this.questionCounter.textContent = `Question ${this.current + 1} of ${this.bank.length}`;
+                
+                // Display question stem with Markdown support or cleaned text
+                if (question.stem_md) {
+                    this.questionStem.innerHTML = renderMD(question.stem_md);
+                } else {
+                    this.questionStem.textContent = cleanText(question.stem);
+                }
+                
+                // Clear and populate choices
+                this.choicesContainer.innerHTML = '<legend class="sr-only">Answer choices</legend>';
+                
+                question.choices.forEach((choice, index) => {
+                    const choiceDiv = document.createElement('div');
+                    choiceDiv.className = 'choice-item';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = 'answer';
+                    input.id = `choice-${index}`;
+                    input.value = index;
+                    input.className = 'choice-input';
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `choice-${index}`;
+                    label.className = 'choice-label';
+                    label.textContent = `${String.fromCharCode(65 + index)}. ${choice}`;
+                    
+                    // Restore previous selection and show highlights/rationale if already answered
+                    if (this.answers[this.current] === index) {
+                        input.checked = true;
+                        choiceDiv.classList.add('selected');
+                        
+                        // Show rationale and highlights immediately
+                        this.showAnswerFeedback();
+                    }
+                    
+                    // Add event listeners
+                    input.addEventListener('change', (e) => this.handleAnswerSelection(e));
+                    choiceDiv.addEventListener('click', () => {
+                        input.checked = true;
+                        input.dispatchEvent(new Event('change'));
+                    });
+                    
+                    choiceDiv.appendChild(input);
+                    choiceDiv.appendChild(label);
+                    this.choicesContainer.appendChild(choiceDiv);
+                });
+                
+                // If no answer selected, hide rationale
+                if (this.answers[this.current] === null) {
+                    this.hideRationale();
+                }
+                
+                // Update button states
+                this.updateNavigationButtons();
+            }
+
+            handleAnswerSelection(event) {
+                const selectedIndex = parseInt(event.target.value);
+                
+                // Store answer
+                this.answers[this.current] = selectedIndex;
+                
+                // Update visual selection
+                document.querySelectorAll('.choice-item').forEach((item, index) => {
+                    item.classList.toggle('selected', index === selectedIndex);
+                });
+                
+                // Immediately show rationale and highlight correct/incorrect
+                this.showAnswerFeedback();
+                
+                this.showStatusMessage(`Answer ${String.fromCharCode(65 + selectedIndex)} selected.`, 'info');
+            }
+
+            showAnswerFeedback() {
+                const question = this.bank[this.current];
+                const userAnswer = this.answers[this.current];
+                
+                if (userAnswer === null) return;
+                
+                // Highlight correct and incorrect answers
+                document.querySelectorAll('.choice-item').forEach((item, index) => {
+                    item.classList.remove('selected', 'correct', 'incorrect');
+                    if (index === question.answer_index) {
+                        item.classList.add('correct');
+                    } else if (index === userAnswer) {
+                        item.classList.add('incorrect');
+                    }
+                });
+                
+                // Show rationale
+                this.showRationale(question.rationale);
+            }
+
+            showRationale(rationale) {
+                const question = this.bank[this.current];
+                if (question.rationale_md) {
+                    this.rationaleText.innerHTML = renderMD(question.rationale_md);
+                } else {
+                    this.rationaleText.textContent = cleanText(rationale || '');
+                }
+                this.rationaleSection.classList.add('show');
+            }
+
+            hideRationale() {
+                this.rationaleSection.classList.remove('show');
+            }
+
+            updateNavigationButtons() {
+                // Previous button
+                this.prevBtn.disabled = this.current === 0;
+                
+                // Next button
+                this.nextBtn.disabled = this.current === this.bank.length - 1;
+            }
+
+            previousQuestion() {
+                if (this.current > 0) {
+                    this.current--;
+                    this.displayCurrentQuestion();
+                }
+            }
+
+            nextQuestion() {
+                if (this.current < this.bank.length - 1) {
+                    this.current++;
+                    this.displayCurrentQuestion();
+                }
+            }
+
+            submitQuiz() {
+                this.stopTimer();
+                this.renderResults();
+                this.resultsSection.classList.remove('hidden');
+                this.resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            grade(bank, answers) {
+                const total = bank.length;
+                let correct = 0;
+                let attempted = 0;
+                const incorrectIndices = [];
+
+                for (let i = 0; i < total; i++) {
+                    if (answers[i] !== null) {
+                        attempted++;
+                        if (answers[i] === bank[i].answer_index) {
+                            correct++;
+                        } else {
+                            incorrectIndices.push(i);
+                        }
+                    } else {
+                        // Unanswered counts as incorrect
+                        incorrectIndices.push(i);
+                    }
+                }
+
+                const percentage = Math.round((correct / total) * 100);
+
+                return {
+                    correct,
+                    attempted,
+                    total,
+                    percentage,
+                    incorrectIndices
+                };
+            }
+
+            renderResults() {
+                const results = this.grade(this.bank, this.answers);
+                
+                // Fill scoreline
+                let scoreText = `Score: ${results.correct}/${results.total} (${results.percentage}%).`;
+                if (results.incorrectIndices.length > 0) {
+                    const missedQuestions = results.incorrectIndices.map(i => `Q${i + 1}`).join(', ');
+                    scoreText += ` Missed: ${missedQuestions}`;
+                }
+                this.scoreline.textContent = scoreText;
+                
+                // Build review of missed items
+                this.review.innerHTML = '';
+                
+                if (results.incorrectIndices.length === 0) {
+                    const perfectDiv = document.createElement('div');
+                    perfectDiv.textContent = 'Perfect score! No questions to review.';
+                    perfectDiv.style.textAlign = 'center';
+                    perfectDiv.style.fontStyle = 'italic';
+                    perfectDiv.style.color = '#27ae60';
+                    this.review.appendChild(perfectDiv);
+                } else {
+                    results.incorrectIndices.forEach(index => {
+                        const question = this.bank[index];
+                        const userAnswer = this.answers[index];
+                        
+                        const missedDiv = document.createElement('div');
+                        missedDiv.className = 'missed-item';
+                        
+                        // Question stem with Markdown support or cleaned text
+                        const stemDiv = document.createElement('div');
+                        stemDiv.className = 'missed-stem';
+                        if (question.stem_md) {
+                            stemDiv.innerHTML = `Q${index + 1}: ${renderMD(question.stem_md)}`;
+                        } else {
+                            stemDiv.textContent = `Q${index + 1}: ${cleanText(question.stem)}`;
+                        }
+                        missedDiv.appendChild(stemDiv);
+                        
+                        // Your answer
+                        const yourAnswerDiv = document.createElement('div');
+                        yourAnswerDiv.className = 'answer-info';
+                        yourAnswerDiv.innerHTML = `<strong>Your answer:</strong> ${userAnswer !== null ? String.fromCharCode(65 + userAnswer) + '. ' + question.choices[userAnswer] : '—'}`;
+                        missedDiv.appendChild(yourAnswerDiv);
+                        
+                        // Correct answer
+                        const correctAnswerDiv = document.createElement('div');
+                        correctAnswerDiv.className = 'answer-info';
+                        correctAnswerDiv.innerHTML = `<strong>Correct answer:</strong> ${String.fromCharCode(65 + question.answer_index)}. ${question.choices[question.answer_index]}`;
+                        missedDiv.appendChild(correctAnswerDiv);
+                        
+                        // Rationale with Markdown support or cleaned text
+                        const rationaleDiv = document.createElement('div');
+                        rationaleDiv.className = 'missed-rationale';
+                        if (question.rationale_md) {
+                            rationaleDiv.innerHTML = renderMD(question.rationale_md);
+                        } else {
+                            rationaleDiv.textContent = cleanText(question.rationale);
+                        }
+                        missedDiv.appendChild(rationaleDiv);
+                        
+                        this.review.appendChild(missedDiv);
+                    });
+                }
+
+                this.showStatusMessage(`Quiz completed! You scored ${results.correct} out of ${results.total} (${results.percentage}%).`, 'success');
+            }
+
+            restartQuiz() {
+                // Reset answers to nulls
+                this.answers = Array(this.bank.length).fill(null);
+                
+                // Hide results, go back to question 1
+                this.resultsSection.classList.add('hidden');
+                this.current = 0;
+                
+                // Clear highlights/rationale and redisplay
+                this.displayCurrentQuestion();
+                
+                // Restart timer
+                this.startTime = new Date();
+                this.startTimer();
+                
+                this.showStatusMessage('Quiz restarted. Good luck!', 'info');
+            }
+
+            handleKeyPress(event) {
+                if (!this.quizSection.classList.contains('hidden')) {
+                    switch (event.key) {
+                        case 'ArrowLeft':
+                            event.preventDefault();
+                            if (!this.prevBtn.disabled) this.previousQuestion();
+                            break;
+                        case 'ArrowRight':
+                            event.preventDefault();
+                            if (!this.nextBtn.disabled) this.nextQuestion();
+                            break;
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '4':
+                            event.preventDefault();
+                            const choiceIndex = parseInt(event.key) - 1;
+                            const radioButton = document.getElementById(`choice-${choiceIndex}`);
+                            if (radioButton) {
+                                radioButton.checked = true;
+                                radioButton.dispatchEvent(new Event('change'));
+                            }
+                            break;
+                        case 'a':
+                        case 'b':
+                        case 'c':
+                        case 'd':
+                            event.preventDefault();
+                            const letterIndex = event.key.charCodeAt(0) - 97; // Convert a-d to 0-3
+                            const letterRadio = document.getElementById(`choice-${letterIndex}`);
+                            if (letterRadio) {
+                                letterRadio.checked = true;
+                                letterRadio.dispatchEvent(new Event('change'));
+                            }
+                            break;
+                    }
+                }
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new MCQQuiz();
+        });
+    </script>
+</body>
+</html>
